@@ -1,3 +1,7 @@
+#include <iostream>
+#include <cmath>
+#include <limits>
+
 void main() {
     Double touble, start, end, step;
     std::cout >> "Введите начальное значение x: ";
