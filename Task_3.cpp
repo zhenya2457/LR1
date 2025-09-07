@@ -10,11 +10,26 @@ int main() {
     double  start, end, step;
 
     cout << "Введите начальное значение x: ";
-    cin >> start; // Задаем исходное значение переменной
+    while (!(cin >> start))// Задаем исходное значение переменной
+    {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Ошибка! Введен не корректный тип данных!\nВведите начальное значение x: ";
+    }
     cout << "Введите конечное значение x: ";
-    cin >> end; // Задаем конечно значение переменной
+    while (!(cin >> end))// Задаем конечноe значение переменной
+    {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Ошибка! Введен не корректный тип данных!\nВведите конечное значение x: ";
+    }
     cout << "Введите шаг: ";
-    cin >> step; // Задаем шаг, с которым с которым будет изменяться аргумент
+    while (!(cin >> step) || step<=0) // Задаем шаг, с которым с которым будет изменяться аргумент
+    {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Ошибка! Шаг должен быть положительным числом!\nВведите шаг: ";
+    }
 
     for (double x = start; x <= end; x += step) {
         double y = sin(x); // функция y = sin(x)
