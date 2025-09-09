@@ -1,40 +1,36 @@
 #include <iostream>
 #include <windows.h>
 #include <cmath>
-#include <limits>
 
 using namespace std;
 
 int main() {
     SetConsoleOutputCP(CP_UTF8);
-    double  start, end, step;
+    double start, end, step;
 
     cout << "Введите начальное значение x: ";
-    while (!(cin >> start))// Задаем исходное значение переменной
+    if (!(cin >> start))// Задаем исходное значение переменной
     {
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Ошибка! Введен не корректный тип данных!\nВведите начальное значение x: ";
+        cout << "Ошибка ввода!\n";
+        return 0;
     }
     cout << "Введите конечное значение x: ";
-    while (!(cin >> end))// Задаем конечноe значение переменной
+    if (!(cin >> end))// Задаем конечноe значение переменной
     {
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Ошибка! Введен не корректный тип данных!\nВведите конечное значение x: ";
+        cout << "Ошибка ввода!\n";
+        return 0;
+
     }
     cout << "Введите шаг: ";
-    while (!(cin >> step) || step<=0) // Задаем шаг, с которым с которым будет изменяться аргумент
+    if (!(cin >> step) || step<=0) // Задаем шаг, с которым с которым будет изменяться аргумент
     {
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Ошибка! Шаг должен быть положительным числом!\nВведите шаг: ";
-    }
+        cout << "Ошибка ввода!\nВведите шаг: ";
+        return 0;
 
+    }
     for (double x = start; x <= end; x += step) {
         double y = sin(x); // функция y = sin(x)
         cout << x << " | " << y << endl; // Выводим значения функции для каждого аргумента (x | y)
     }
-
     return 0;
 }
